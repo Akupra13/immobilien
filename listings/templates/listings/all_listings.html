@@ -1,0 +1,13 @@
+<h1>Все объявления</h1>
+<ul>
+    {% for listing in listings %}
+        <li>
+            <strong>{{ listing.title }}</strong><br>
+            {{ listing.description }}<br>
+            <a href="{% url 'listings:view-listing' listing.id %}">Просмотреть</a>
+        </li>
+    {% empty %}
+        <p>Нет доступных объявлений.</p>
+    {% endfor %}
+</ul>
+

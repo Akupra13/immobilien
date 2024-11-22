@@ -1,0 +1,14 @@
+<h1>Управление бронированиями</h1>
+{% for booking in bookings %}
+    <p>Объявление: {{ booking.listing.title }} - Даты: {{ booking.start_date }} по {{ booking.end_date }}</p>
+    <form method="post" action="{% url 'listings:confirm_booking' booking.id %}">
+        {% csrf_token %}
+        <button type="submit">Подтвердить</button>
+    </form>
+    <form method="post" action="{% url 'listings:reject_booking' booking.id %}">
+        {% csrf_token %}
+        <button type="submit">Отклонить</button>
+    </form>
+{% empty %}
+    <p>Нет ожидающих подтверждения бронирований.</p>
+{% endfor %}

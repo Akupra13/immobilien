@@ -1,0 +1,7 @@
+<!--listings/create_listing.html-->
+<h1>Добавить новое объявление</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Создать объявление</button>
+</form>

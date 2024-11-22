@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ listing.title }}</title>
+</head>
+<body>
+    <h1>{{ listing.title }}</h1>
+    <p><strong>Описание:</strong> {{ listing.description }}</p>
+    <p><strong>Местоположение:</strong> {{ listing.location }}</p>
+    <p><strong>Цена:</strong> {{ listing.price }} €</p>
+    <p><strong>Тип собственности:</strong> {{ listing.property_type }}</p>
+    <p><strong>Количество комнат:</strong> {{ listing.rooms }}</p>
+    <p><strong>Статус:</strong> {{ listing.status }}</p>
+    {% if listing.is_booked %}
+        <p>Это объявление уже забронировано.</p>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Забронировать</button>
+        </form>
+    {% endif %}
+    <a href="{% url 'listings:all-listings' %}">Назад к списку объявлений</a>
+</body>
+</html>
+
+<!--&lt;!&ndash; view_listing.html &ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Просмотр объявления</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>{{ listing.title }}</h1>-->
+<!--    <p><strong>Цена:</strong> {{ listing.price }} €</p>-->
+<!--    <p><strong>Местоположение:</strong> {{ listing.location }}</p>-->
+<!--    <p><strong>Тип собственности:</strong> {{ listing.property_type }}</p>-->
+<!--    <p><strong>Количество комнат:</strong> {{ listing.rooms }}</p>-->
+<!--    &lt;!&ndash; Отображение статуса бронирования &ndash;&gt;-->
+<!--    <h2>Статус бронирования:</h2>-->
+<!--    <p>{{ booking_status }}</p>-->
+<!--    {% if booking_status == 'Свободно' %}-->
+<!--        <p>Это объявление доступно для бронирования.</p>-->
+<!--        <form method="post">-->
+<!--            {% csrf_token %}-->
+<!--            <button type="submit">Забронировать</button>-->
+<!--        </form>-->
+<!--    {% else %}-->
+<!--        <p>Это объявление уже забронировано.</p>-->
+<!--    {% endif %}-->
+<!--    <a href="{% url 'listings:all-listings' %}">Назад к списку объявлений</a>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Bookings</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                <p>{{ booking.listing.title }} - {{ booking.status }} (From {{ booking.start_date }} to {{ booking.end_date }})</p>
+                {% if booking.status == "pending" %}
+                    <a href="{% url 'bookings:cancel-booking' booking.id %}">Cancel Booking</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
